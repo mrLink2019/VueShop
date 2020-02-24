@@ -2,7 +2,7 @@ let app = new Vue({
   el: '#shop',
 
   components: {
-
+    'v-header': Vheader,
   },
 
   computed: {
