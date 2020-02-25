@@ -6,11 +6,14 @@ let app = new Vue({
   },
 
   computed: {
-
+    cartItemsCount: function() {
+      return store.getters.cartItemsCount;
+    }
+    // store.getters.cartItemsCount
   },
 
   data: {
-
+    
   },
 
   methods: {

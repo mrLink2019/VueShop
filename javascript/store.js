@@ -1,6 +1,6 @@
 const store = new Vuex.Store({
 	state: {
-
+		cartItems: []
 	},
 
 	mutations: {
@@ -12,7 +12,10 @@ const store = new Vuex.Store({
 	},
 
 	getters: {
-
+		cartItemsCount: state=> {
+			return state.cartItems.length;
+		}
+		
 	}
 
 });

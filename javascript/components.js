@@ -1,5 +1,9 @@
 let Vheader = {
-  props: ['items-length'],
+
+  props: {
+  	cartitemscount: Number,
+  },
+
   template: `<header class="navbar navbar-expand-md navbar-dark bg-primary text-light">
 			<div class="navbar-header">
 				<a href="#" class="navbar-brand mr-5">
@@ -35,7 +39,7 @@ let Vheader = {
 						<i class="fa fa-shopping-cart">
 							<sup>
 								<span class="badge bg-danger text-white z-depth-1 mr-1">
-									{{items-length}}
+									{{cartitemscount}}
 								</span>
 							</sup>
 						</i>
@@ -54,6 +58,11 @@ let Vheader = {
 				</li>
 			</ul>
 		</header>`,
+
+  data: {
+  	
+  },
+
   methods: {
 
 
