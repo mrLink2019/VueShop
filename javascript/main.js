@@ -10,7 +10,7 @@ let app = new Vue({
     cartItemsCount: function() {
       return store.getters.cartItemsCount;
     }
-    // store.getters.cartItemsCount
+
   },
 
   data: {

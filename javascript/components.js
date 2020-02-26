@@ -1,10 +1,10 @@
 let Vheader = {
 
-  props: {
-  	cartitemscount: Number,
-  },
+	props: {
+		cartitemscount: Number,
+	},
 
-  template: `<header class="navbar navbar-expand-md navbar-dark bg-primary text-light">
+	template: `<header class="navbar navbar-expand-md navbar-dark bg-primary text-light">
 			<div class="navbar-header">
 				<a href="#" class="navbar-brand mr-5">
 				<strong class="text-warning">BestShop</strong>
@@ -59,24 +59,25 @@ let Vheader = {
 			</ul>
 		</header>`,
 
-  data: {
-  	
-  },
+ 	data: function () {
+		return {
 
-  methods: {
+    	}
+	},
 
-  }
+	methods: {
+
+	}
 };
 
 let Vfooter = {
 
-  props: {
+	props: {
   	
-  },
+ 	},
 
-  template: `<footer class="row pt-3 position-fixed" style="bottom: 0; right: 0; left:0;">
-				<div class="col">
-					<div class="container-fluid bg-primary text-warning">
+	template: `<footer class="pt-3">
+					<div class="container-fluid bg-primary text-warning w-100">
 						<div class="row">
 							<div class="col-md-2">
 							</div>
@@ -164,14 +165,14 @@ let Vfooter = {
 							</div>
 						</div>
 					</div>
-				</div>
 			</footer>`,
 
-  data: {
-  	
-  },
+	data: function () {
+    	return {
 
-  methods: {
+    	}
+  	},
+	methods: {
 
-  }
+ 	}
 };
