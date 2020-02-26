@@ -65,6 +65,113 @@ let Vheader = {
 
   methods: {
 
+  }
+};
+
+let Vfooter = {
+
+  props: {
+  	
+  },
+
+  template: `<footer class="row pt-3 position-fixed" style="bottom: 0; right: 0; left:0;">
+				<div class="col">
+					<div class="container-fluid bg-primary text-warning">
+						<div class="row">
+							<div class="col-md-2">
+							</div>
+							<div class="col-md-3 col-sm-6">
+								<div class="footer-pad mt-2">
+									<h4>Contacts</h4>
+									<ul class="list-unstyled">
+										<li>
+											<a href="#footer" class="text-warning">
+												<strong>Payment Center</strong>
+											</a>
+										</li>
+										<li>
+											<a href="#footer" class="text-warning">
+												<strong>Contact Support</strong>
+											</a>
+										</li>
+										<li>
+											<a href="#footer" class="text-warning">
+												<strong>News and Updates</strong>
+											</a>
+										</li>
+										<li>
+											<a href="#footer" class="text-warning">
+												<strong>Forum</strong>
+											</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<div class="col-md-3 col-sm-6">
+								<div class="footer-pad mt-2">
+									<h4>FAQs</h4>
+									<ul class="list-unstyled">
+										<li>
+											<a href="#footer" class="text-warning">
+												<strong>Website Tutorial</strong>
+											</a>
+										</li>
+										<li>
+											<a href="#footer" class="text-warning">
+												<strong>Accessibility</strong>
+											</a>
+										</li>
+										<li>
+											<a href="#footer" class="text-warning">
+												<strong>Privacy Policy</strong>
+											</a>
+										</li>
+										<li>
+											<a href="#footer" class="text-warning">
+												<strong>FAQ</strong>
+											</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<div class="col-md-3 mt-2">
+								<h4>Follow Us</h4>
+								<ul class="social-network social-circle" style="list-style: none; display: inline;  margin-left: 0;">
+									<li>
+										<a href="#footer" class="icoFacebook text-warning" title="Facebook">
+											<i class="fa fa-facebook"></i>
+											<strong>Facebook</strong>
+										</a>
+									</li>
+									<li>
+										<a href="#footer" class="icoLinkedin text-warning" title="Linkedin">
+											<i class="fa fa-linkedin"></i>
+											<strong>Linkedin</strong>
+										</a>
+									</li>
+									<li>
+										<a href="#footer" class="icoTelegram text-warning" title="Telegram">
+											<i class="fa fa-telegram"></i>
+											<strong>Telegram</strong>
+										</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12 copy">
+								<p class="text-center">&copy; Copyright 2020 - Created by Andriy Lianh</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</footer>`,
+
+  data: {
+  	
+  },
+
+  methods: {
 
   }
 };

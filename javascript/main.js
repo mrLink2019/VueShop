@@ -3,6 +3,7 @@ let app = new Vue({
 
   components: {
     'v-header': Vheader,
+    'v-footer': Vfooter,
   },
 
   computed: {
