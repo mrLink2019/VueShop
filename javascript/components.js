@@ -176,3 +176,38 @@ let Vfooter = {
 
  	}
 };
+
+let Vnavbar = {
+
+	props: {
+  	
+ 	},
+
+	template: `<div class="navbar navbar-collapse float-left sticky-top mr-4 bg-dark" >
+				<ul class="nav navbar-nav side-nav mt-2 text-warning">
+					<li class="nav-item">
+						
+						<strong>click</strong>
+						
+					</li>
+					<li class="nav-item">
+							<strong>Contact Support</strong>
+					</li>
+					<li class="nav-item">
+							<strong>News and Updates</strong>
+					</li>
+					<li class="nav-item">
+							<strong>Forum</strong>
+					</li>
+				</ul>
+			</div>`,
+
+	data: function () {
+    	return {
+
+    	}
+  	},
+	methods: {
+
+ 	}
+};
