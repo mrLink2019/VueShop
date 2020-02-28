@@ -12,8 +12,17 @@
 		<div class="header">
 			<v-header :cartitemscount="cartItemsCount"></v-header>
 		</div>
-		
 		<v-navbar></v-navbar>
+
+		<div class="container-fluid">
+			<div class="row">
+				<div class="card-deck">
+
+					<v-product v-for="product in products" :product_data="product" :key="product.article"></v-product>
+
+				</div>
+			</div>			
+		</div>
 		
 		<div class="footer">
 			<v-footer></v-footer>

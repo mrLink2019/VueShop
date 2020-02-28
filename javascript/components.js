@@ -1,7 +1,12 @@
 let Vheader = {
 
 	props: {
-		cartitemscount: Number,
+		cartitemscount: {
+			type: Number,
+			default() {
+				return 0
+			}
+		},
 	},
 
 	template: `<header class="navbar navbar-expand-md navbar-dark bg-primary text-light">
@@ -180,7 +185,7 @@ let Vfooter = {
 let Vnavbar = {
 
 	props: {
-  	
+  		
  	},
 
 	template: `<div class="navbar navbar-collapse float-left sticky-top mr-4 bg-dark" >
@@ -201,6 +206,39 @@ let Vnavbar = {
 					</li>
 				</ul>
 			</div>`,
+
+	data: function () {
+    	return {
+
+    	}
+  	},
+	methods: {
+
+ 	}
+};
+
+let Vproduct = {
+
+	props: {
+  		product_data: {
+  			type: Object,
+  			default() {
+  				return{}
+  			}
+  		},
+ 	},
+
+	template: ` <div class="card text-white bg-danger">
+					<img class="card-img" src="'images/' + product_data.images[0]" alt="">
+					<div class="card-body">
+						<h5 class="card-title"><b>product_data.name</b> <br> <br></h5>
+						<p class="card-text">'Article: ' + product_data.article</p>
+					</div>
+					<div class="card-footer">
+						<p class="text-warning price"><b>product_data.price + '$'</b></p>
+						<button class="btn btn-primary btn-lg btn-block"><b>Details</b></button>
+					</div>
+				</div>`,
 
 	data: function () {
     	return {
