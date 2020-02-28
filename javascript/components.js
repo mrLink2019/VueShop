@@ -220,7 +220,7 @@ let Vnavbar = {
 let Vproduct = {
 
 	props: {
-  		product_data: {
+  		productdata: {
   			type: Object,
   			default() {
   				return{}
@@ -228,14 +228,14 @@ let Vproduct = {
   		},
  	},
 
-	template: ` <div class="card text-white bg-danger">
-					<img class="card-img" src="'images/' + product_data.images[0]" alt="">
+	template: ` <div class="card text-white bg-danger" >
+					<img class="card-img" :src="'images/' + productdata.images[0]" alt="">
 					<div class="card-body">
-						<h5 class="card-title"><b>product_data.name</b> <br> <br></h5>
-						<p class="card-text">'Article: ' + product_data.article</p>
+						<h5 class="card-title"><b>{{productdata.name}}</b> <br> <br></h5>
+						<p class="card-text">{{'Article: ' + productdata.article}}</p>
 					</div>
 					<div class="card-footer">
-						<p class="text-warning price"><b>product_data.price + '$'</b></p>
+						<p class="text-warning price"><b>{{productdata.price + '$'}}</b></p>
 						<button class="btn btn-primary btn-lg btn-block"><b>Details</b></button>
 					</div>
 				</div>`,
