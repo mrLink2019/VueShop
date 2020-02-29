@@ -39,22 +39,22 @@ const store = new Vuex.Store({
 				article: "71272747"
 			},
 			{
-				images: ["d1.jpg", "d2.jpg", "d3.jpg", "d4.jpg"],
-				name: "ENOVO Tab M10 HD 2/32GB",
-				price: "4799",
-				article: "71271476"
+				images: ["g1.jpg", "g2.jpg", "g3.jpg", "g4.jpg"],
+				name: "NIKON D3500 + AF-P 18-55 non VR",
+				price: "12599",
+				article: "71263098"
 			},
 			{
-				images: ["e1.jpg", "e2.jpg", "e3.jpg", "e4.jpg"],
-				name: "HUAWEI MediaPad M5 Lite 4/64GB",
-				price: "8999",
-				article: "71283342"
+				images: ["h1.jpg", "h2.jpg", "h3.jpg", "h4.jpg"],
+				name: "PANASONIC Lumix DMC-TZ80",
+				price: "8699",
+				article: "71201848"
 			},
 			{
-				images: ["f1.jpg", "f2.jpg", "f3.jpg", "f4.jpg"],
-				name: "MICROSOFT Surface Pro 6 8/256Gb",
-				price: "41999",
-				article: "71272747"
+				images: ["i1.jpeg", "i2.jpg", "i3.jpg", "i4.jpg"],
+				name: "CANON EOS Wi-Fi 4000D 18-55 DC III",
+				price: "9299",
+				article: "71255600"
 			}
 		]
 	},
