@@ -235,8 +235,8 @@ let Vproduct = {
 						<p class="card-text">{{'Article: ' + productdata.article}}</p>
 					</div>
 					<div class="card-footer">
-						<p class="text-warning price"><b>{{productdata.price + ' UAH'}}</b></p>
-						<button class="btn btn-primary btn-lg btn-block"><b>Details</b></button>
+						<p class="text-warning price" style="font-size: 25px;"><b>{{productdata.price + ' UAH'}}</b></p>
+						<a class="btn btn-primary btn-lg btn-block" href="#" @click="setCurrentProduct(productdata.article)"><b>Details</b></a>
 					</div>
 				</div>`,
 
@@ -246,6 +246,9 @@ let Vproduct = {
     	}
   	},
 	methods: {
-
+		setCurrentProduct(productArticle) {
+	      store.commit('setCurrentProduct', productArticle);
+	      console.log(productArticle);
+	    },
  	}
 };

@@ -1,6 +1,6 @@
 const store = new Vuex.Store({
 	state: {
-		cartItems: [],
+		cartItems: new Set(),
 		products: [
 			{
 				images: ["a1.jpg", "a2.jpg", "a3.jpg", "a4.jpg"],
@@ -22,7 +22,7 @@ const store = new Vuex.Store({
 			},
 			{
 				images: ["d1.jpg", "d2.jpg", "d3.jpg", "d4.jpg"],
-				name: "ENOVO Tab M10 HD 2/32GB",
+				name: "LENOVO Tab M10 HD 2/32GB",
 				price: "4799",
 				article: "71271476"
 			},
@@ -56,10 +56,17 @@ const store = new Vuex.Store({
 				price: "9299",
 				article: "71255600"
 			}
-		]
+		],
+		currentProduct: ""
 	},
 
 	mutations: {
+		setCurrentProduct: (state, productArticle) => {
+			state.currentProduct = productArticle;
+		},
+		addCartItem: (state, product) => {
+			state.cartItems.add(product);
+		}
 
 	},
 
@@ -68,12 +75,19 @@ const store = new Vuex.Store({
 	},
 
 	getters: {
+		cartItems: state=> {
+			return state.cartItems;
+		},
 		cartItemsCount: state=> {
 			return state.cartItems.length;
 		},
 		products: state=> {
 			return state.products;
+		},
+		currentProduct: state=> {
+			return state.currentProduct;
 		}
+
 		
 	}
 
