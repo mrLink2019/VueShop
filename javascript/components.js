@@ -228,14 +228,14 @@ let Vproduct = {
   		},
  	},
 
-	template: ` <div class="card text-white bg-danger" >
-					<img class="card-img" :src="'images/' + productdata.images[0]" alt="">
+	template: ` <div class="card text-white bg-danger" style="padding: 10px; margin-bottom: 16px;">
+					<img class="card-img" :src="'images/' + productdata.images[0]" alt="" style="width: 375px; height: 260px;">
 					<div class="card-body">
 						<h5 class="card-title"><b>{{productdata.name}}</b> <br> <br></h5>
 						<p class="card-text">{{'Article: ' + productdata.article}}</p>
 					</div>
 					<div class="card-footer">
-						<p class="text-warning price"><b>{{productdata.price + '$'}}</b></p>
+						<p class="text-warning price"><b>{{productdata.price + ' UAH'}}</b></p>
 						<button class="btn btn-primary btn-lg btn-block"><b>Details</b></button>
 					</div>
 				</div>`,
