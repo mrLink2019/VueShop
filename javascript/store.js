@@ -88,7 +88,23 @@ const store = new Vuex.Store({
 			state.currentProduct = productArticle;
 		},
 		addCartItem: (state, product) => {
-			state.cartItems.push(product);
+			if(state.cartItems.length) {
+				let isProductInCart = false;
+				state.cartItems.map(function (item) {
+					if (item.article === product.article) {
+						isProductInCart = true;
+						product.count++;
+					}
+				})
+				if (!isProductInCart) {
+					product.count = 1;
+					state.cartItems.push(product);
+				}
+			} else {
+				product.count = 1;
+				state.cartItems.push(product);
+			}
+
 		},
 
 		deleteCartItem: (state, itemArticle) => {
@@ -133,12 +149,6 @@ const store = new Vuex.Store({
 		currentProduct: state=> {
 			return state.currentProduct;
 		},
-
-		isProductInCart: (state, product) => {
-			state.cartItems.forEach(x => x.article === product.article);
-		}
-
-		
 	}
 
 });

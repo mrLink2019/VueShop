@@ -41,12 +41,10 @@ let Vheader = {
 			<ul class="nav navbar-nav nav-flex-icons">
 				<li class="nav-item">
 					<a href="#" class="nav-link ">
-						<i class="fa fa-shopping-cart">
-							<sup>
-								<span class="badge bg-danger text-white z-depth-1 mr-1">
-									{{cartitemscount}}
-								</span>
-							</sup>
+						<i class="fa fa-shopping-cart">	
+							<span class="badge bg-danger text-white z-depth-1 mr-1">
+								{{cartitemscount}}
+							</span>
 						</i>
 						<span class="d-sm-inline-block text-warning">
 							<strong>Cart</strong>
