@@ -265,9 +265,10 @@ let VcartItem = {
  	},
 
 	template: ` 
-			<div class="row bg-danger mt-3 mb-3">
-				<div class="col-3 mt-2 mb-2">
+			<div class="row bg-danger mt-3 mb-3" style="box-shadow: 0 0 8px 0 #e0e0e0;">
+				<div class="col-3 mt-3 mb-3">
 					<img :src="'images/' + itemdata.images[0]" alt="" class="w-100">
+					{{setItemCount()}}
 				</div>
 				<div class="col-3 text-warning"
 					 style="
@@ -277,9 +278,15 @@ let VcartItem = {
 					    justify-content:space-around;
 					    align-items: center;">
 
-					<strong>{{itemdata.name}}</strong>
-					<strong>{{itemdata.article}}</strong>
-					<strong>{{itemdata.price}}</strong>
+					<p class="text-white" style="font-size: 20px;">
+						<b>{{itemdata.name}}</b>
+					</p>
+					<strong>
+						{{'Article: ' + itemdata.article}}
+					</strong>
+					<strong style="font-size: 25px;">
+						{{itemdata.price + ' UAH'}}
+					</strong>
 				</div>
 				<div class="col-3"
 					 style="
@@ -291,8 +298,10 @@ let VcartItem = {
 					<button class="button btn-primary">
 						-
 					</button>
-					<input class="w-25" type="number" value="1">
-					<button class="button btn-primary">
+					<strong class="text-white">
+						{{itemdata.count}}
+					</strong>
+					<button class="button btn-primary" @click="addCount()">
 						+
 					</button>
 				</div>
@@ -302,8 +311,11 @@ let VcartItem = {
 					    flex-wrap: wrap; 
 					    justify-content:space-around;
 					    align-items: center;">
-					<button class="button btn-primary btn-lg">remove</button>
-				</div>`,
+					<button class="button btn-primary btn-lg" @click="deleteItem(itemdata.article)">
+						remove
+					</button>
+				</div>
+			</div>`,
 
 	data: function () {
     	return {
@@ -311,9 +323,18 @@ let VcartItem = {
     	}
   	},
 	methods: {
-		setCurrentProduct(productArticle) {
-	      store.commit('setCurrentProduct', productArticle);
-	      console.log(productArticle);
-	    },
+		setItemCount() {
+			this.$set(this.itemdata, 'count', 1);
+		},
+
+		addCount() {
+			this.$set(this.itemdata, 'count', this.itemdata.count++);
+		},
+
+		deleteItem() {
+			this.$emit('deletecartitem');
+		}
+
  	}
+
 };

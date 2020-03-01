@@ -1,6 +1,14 @@
 const store = new Vuex.Store({
 	state: {
-		cartItems: new Set(),
+		cartItems: [
+			{
+				images: ["a1.jpg", "a2.jpg", "a3.jpg", "a4.jpg"],
+				name: "ZenBook 13 UX333FA-A4199T",
+				price: "21999",
+				article: "71282506"
+			}
+		],
+
 		products: [
 			{
 				images: ["a1.jpg", "a2.jpg", "a3.jpg", "a4.jpg"],
@@ -65,7 +73,12 @@ const store = new Vuex.Store({
 			state.currentProduct = productArticle;
 		},
 		addCartItem: (state, product) => {
-			state.cartItems.add(product);
+			state.cartItems.forEach(x => x.article != product.article ? state.cartItems.push(product) : x);
+		},
+
+		deleteCartItem: (state, itemArticle) => {
+
+			state.cartItems.splice(itemArticle, 1);
 		}
 
 	},

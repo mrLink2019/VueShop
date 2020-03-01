@@ -12,6 +12,10 @@ let cart = new Vue({
     cartItems: function() {
       return store.getters.cartItems;
     },
+    cartItemsCount: function() {
+      return store.getters.cartItemsCount;
+    },
+
   },
 
   data: {
@@ -19,6 +23,9 @@ let cart = new Vue({
   },
 
   methods: {
+    deleteCartItem (itemArticle) {
+      store.commit('deleteCartItem', itemArticle);
+    }
 
   }
 
