@@ -4,8 +4,20 @@ const store = new Vuex.Store({
 			{
 				images: ["a1.jpg", "a2.jpg", "a3.jpg", "a4.jpg"],
 				name: "ZenBook 13 UX333FA-A4199T",
-				price: "21999",
+				price: 21999,
 				article: "71282506"
+			},
+			{
+				images: ["f1.jpg", "f2.jpg", "f3.jpg", "f4.jpg"],
+				name: "MICROSOFT Surface Pro 6 8/256Gb",
+				price: 41999,
+				article: "71272747"
+			},
+			{
+				images: ["g1.jpg", "g2.jpg", "g3.jpg", "g4.jpg"],
+				name: "NIKON D3500 + AF-P 18-55 non VR",
+				price: 12599,
+				article: "71263098"
 			}
 		],
 
@@ -13,55 +25,55 @@ const store = new Vuex.Store({
 			{
 				images: ["a1.jpg", "a2.jpg", "a3.jpg", "a4.jpg"],
 				name: "ZenBook 13 UX333FA-A4199T",
-				price: "21999",
+				price: 21999,
 				article: "71282506"
 			},
 			{
 				images: ["b1.jpg", "b2.jpg", "b3.jpg", "b4.jpg"],
 				name: "Acer Aspire 3 A315-22",
-				price: "5199",
+				price: 5199,
 				article: "71279753"
 			},
 			{
 				images: ["c1.png", "c2.jpg", "c3.jpg", "c4.jpg"],
 				name: "HP Envy x360 13-ar0005ur",
-				price: "19999",
+				price: 19999,
 				article: "71271738"
 			},
 			{
 				images: ["d1.jpg", "d2.jpg", "d3.jpg", "d4.jpg"],
 				name: "LENOVO Tab M10 HD 2/32GB",
-				price: "4799",
+				price: 4799,
 				article: "71271476"
 			},
 			{
 				images: ["e1.jpg", "e2.jpg", "e3.jpg", "e4.jpg"],
 				name: "HUAWEI MediaPad M5 Lite 4/64GB",
-				price: "8999",
+				price: 8999,
 				article: "71283342"
 			},
 			{
 				images: ["f1.jpg", "f2.jpg", "f3.jpg", "f4.jpg"],
 				name: "MICROSOFT Surface Pro 6 8/256Gb",
-				price: "41999",
+				price: 41999,
 				article: "71272747"
 			},
 			{
 				images: ["g1.jpg", "g2.jpg", "g3.jpg", "g4.jpg"],
 				name: "NIKON D3500 + AF-P 18-55 non VR",
-				price: "12599",
+				price: 12599,
 				article: "71263098"
 			},
 			{
 				images: ["h1.jpg", "h2.jpg", "h3.jpg", "h4.jpg"],
 				name: "PANASONIC Lumix DMC-TZ80",
-				price: "8699",
+				price: 8699,
 				article: "71201848"
 			},
 			{
 				images: ["i1.jpeg", "i2.jpg", "i3.jpg", "i4.jpg"],
 				name: "CANON EOS Wi-Fi 4000D 18-55 DC",
-				price: "9299",
+				price: 9299,
 				article: "71255600"
 			}
 		],
@@ -77,8 +89,12 @@ const store = new Vuex.Store({
 		},
 
 		deleteCartItem: (state, itemArticle) => {
-
 			state.cartItems.splice(itemArticle, 1);
+		},
+
+		clearCart: (state) => {
+			console.log("WOOORKKK");
+			state.cartItems = [];
 		}
 
 	},
@@ -94,6 +110,13 @@ const store = new Vuex.Store({
 		cartItemsCount: state=> {
 			return state.cartItems.length;
 		},
+
+		cartItemsPrice: state=> {
+			let fullPrice = 0;
+			state.cartItems.forEach(x => fullPrice += x.price);
+			return fullPrice;
+		},
+
 		products: state=> {
 			return state.products;
 		},

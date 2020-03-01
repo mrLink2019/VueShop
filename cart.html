@@ -20,6 +20,26 @@
 				@deletecartitem = "deleteCartItem(index)">
 				</v-cart-item>
 			</div>
+			<div class="container-fluid">
+				<div class="row bg-danger text-white">
+					<div class="col-4 mt-3 mb-3">
+						<strong>
+							Price of all your products: 
+						</strong> 
+					</div>
+					<div class="col-4 mt-3 mb-3">
+						<strong>
+							{{fullPrice + ' UAH'}}
+						</strong>
+					</div>
+					<div class="col-2 mt-1" @click="buy(fullPrice)">
+						<button class="button btn-primary btn-lg btn-block">
+							Buy
+						</button>
+					</div>
+					
+				</div>
+			</div>
 			<div class="footer">
 				<v-footer></v-footer>
 			</div>

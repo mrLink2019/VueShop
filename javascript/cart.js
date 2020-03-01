@@ -15,6 +15,9 @@ let cart = new Vue({
     cartItemsCount: function() {
       return store.getters.cartItemsCount;
     },
+    fullPrice: function() {
+      return store.getters.cartItemsPrice;
+    }
 
   },
 
@@ -25,6 +28,15 @@ let cart = new Vue({
   methods: {
     deleteCartItem (itemArticle) {
       store.commit('deleteCartItem', itemArticle);
+    },
+
+    buy(fullPrice) {
+      if (fullPrice !=0) {
+      alert('You succesfully bought products on sum ' + fullPrice + ' UAH');
+      store.commit('clearCart');
+      } else {
+        alert('You must add something in your cart!');
+      }
     }
 
   }
