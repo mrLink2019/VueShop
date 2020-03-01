@@ -52,7 +52,7 @@ const store = new Vuex.Store({
 			},
 			{
 				images: ["i1.jpeg", "i2.jpg", "i3.jpg", "i4.jpg"],
-				name: "CANON EOS Wi-Fi 4000D 18-55 DC III",
+				name: "CANON EOS Wi-Fi 4000D 18-55 DC",
 				price: "9299",
 				article: "71255600"
 			}

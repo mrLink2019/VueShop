@@ -252,3 +252,68 @@ let Vproduct = {
 	    },
  	}
 };
+
+let VcartItem = {
+
+	props: {
+  		itemdata: {
+  			type: Object,
+  			default() {
+  				return{}
+  			}
+  		},
+ 	},
+
+	template: ` 
+			<div class="row bg-danger mt-3 mb-3">
+				<div class="col-3 mt-2 mb-2">
+					<img :src="'images/' + itemdata.images[0]" alt="" class="w-100">
+				</div>
+				<div class="col-3 text-warning"
+					 style="
+					    display: flex; 
+					    flex-wrap: wrap; 
+					    flex-direction: column;
+					    justify-content:space-around;
+					    align-items: center;">
+
+					<strong>{{itemdata.name}}</strong>
+					<strong>{{itemdata.article}}</strong>
+					<strong>{{itemdata.price}}</strong>
+				</div>
+				<div class="col-3"
+					 style="
+					    display: flex; 
+					    flex-wrap: wrap; 
+					    flex-direction: row;
+					    justify-content:space-around;
+					    align-items: center;">
+					<button class="button btn-primary">
+						-
+					</button>
+					<input class="w-25" type="number" value="1">
+					<button class="button btn-primary">
+						+
+					</button>
+				</div>
+				<div class="col-3" 
+					 style="
+					    display: flex; 
+					    flex-wrap: wrap; 
+					    justify-content:space-around;
+					    align-items: center;">
+					<button class="button btn-primary btn-lg">remove</button>
+				</div>`,
+
+	data: function () {
+    	return {
+
+    	}
+  	},
+	methods: {
+		setCurrentProduct(productArticle) {
+	      store.commit('setCurrentProduct', productArticle);
+	      console.log(productArticle);
+	    },
+ 	}
+};
