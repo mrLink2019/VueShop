@@ -1,22 +1,17 @@
 let app = new Vue({
-  el: '#shop',
+  el: '#shopPage',
 
   components: {
-    'v-header':  Vheader,
-    'v-footer':  Vfooter,             
+    'v-header':  Vheader,             
     'v-navbar':  Vnavbar,
-    'v-product': Vproduct,
-    'v-cart-item': VcartItem,
+    'v-catalog': Vcatalog,
+    'v-footer':  Vfooter,
   },
 
   computed: {
     cartItemsCount: function() {
       return store.getters.cartItemsCount;
-    },
-    products: function() {
-      return store.getters.products;
     }
-
   },
 
   data: {

@@ -8,33 +8,12 @@
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	</head>
 	<body>
-		<div id="shop">
-			<div class="header">
-				<v-header :cartitemscount="cartItemsCount"></v-header>
-			</div>
+		<div id="shopPage">
+			<v-header :cartitemscount="cartItemsCount"></v-header>
 			<v-navbar></v-navbar>
-			<div class="container-fluid">
-				<div class="row mt-3">
-					<div class="product-catalog"
-						style="
-						display: flex;
-						flex-wrap: wrap;
-						justify-content:space-around;
-						align-items: center;">
-						<v-product
-						v-for="product in products"
-						:productdata="product"
-						:key="product.article" >
-						
-						</v-product>
-					</div>
-				</div>
-				
-			</div>
-			
-			<div class="footer">
-				<v-footer></v-footer>
-			</div>
+			<v-catalog></v-catalog>			
+			<v-footer></v-footer>
+
 		</div>
 		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 		<script src="https://unpkg.com/vuex"></script>

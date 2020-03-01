@@ -8,43 +8,11 @@
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	</head>
 	<body>
-		<div id="cart">
-			<div class="header">
-				<v-header :cartitemscount="cartItemsCount"></v-header>
-			</div>
-			<div class="container-fluid">
-				<v-cart-item
-				v-for = "(item, index) in cartItems"
-				:itemdata = "item"
-				:key = "item.article"
-				@additemcount = "addItemCount(index)"
-				@subtractitemcount = "subtractItemCount(index)"
-				@deletecartitem = "deleteCartItem(index)">
-				</v-cart-item>
-			</div>
-			<div class="container-fluid">
-				<div class="row bg-danger text-white">
-					<div class="col-4 mt-3 mb-3">
-						<strong>
-							Price of all your products: 
-						</strong> 
-					</div>
-					<div class="col-4 mt-3 mb-3">
-						<strong>
-							{{fullPrice + ' UAH'}}
-						</strong>
-					</div>
-					<div class="col-2 mt-1" @click="buy(fullPrice)">
-						<button class="button btn-primary btn-lg btn-block">
-							Buy
-						</button>
-					</div>
-					
-				</div>
-			</div>
-			<div class="footer">
-				<v-footer></v-footer>
-			</div>
+		<div id="cartPage">
+
+			<v-header :cartitemscount="cartItemsCount"></v-header>
+			<v-cart></v-cart>
+			<v-footer></v-footer>
 			
 		</div>
 		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
