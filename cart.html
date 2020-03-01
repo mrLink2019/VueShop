@@ -17,6 +17,8 @@
 				v-for = "(item, index) in cartItems"
 				:itemdata = "item"
 				:key = "item.article"
+				@additemcount = "addItemCount(index)"
+				@subtractitemcount = "subtractItemCount(index)"
 				@deletecartitem = "deleteCartItem(index)">
 				</v-cart-item>
 			</div>

@@ -26,6 +26,14 @@ let cart = new Vue({
   },
 
   methods: {
+    addItemCount (itemIndex) {
+      store.commit('addItemCount', itemIndex);
+    },
+
+    subtractItemCount (itemIndex) {
+      store.commit('subtractItemCount', itemIndex);
+    },
+
     deleteCartItem (itemArticle) {
       store.commit('deleteCartItem', itemArticle);
     },

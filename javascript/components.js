@@ -268,7 +268,6 @@ let VcartItem = {
 			<div class="row bg-danger mt-3 mb-3" style="box-shadow: 0 0 8px 0 #e0e0e0;">
 				<div class="col-3 mt-3 mb-3">
 					<img :src="'images/' + itemdata.images[0]" alt="" class="w-100">
-					{{setItemCount()}}
 				</div>
 				<div class="col-3 text-warning"
 					 style="
@@ -295,7 +294,7 @@ let VcartItem = {
 					    flex-direction: row;
 					    justify-content:space-around;
 					    align-items: center;">
-					<button class="button btn-primary">
+					<button class="button btn-primary" @click="substractCount()">
 						-
 					</button>
 					<strong class="text-white">
@@ -323,12 +322,12 @@ let VcartItem = {
     	}
   	},
 	methods: {
-		setItemCount() {
-			this.$set(this.itemdata, 'count', 1);
+		addCount() {
+			this.$emit('additemcount');
 		},
 
-		addCount() {
-			this.$set(this.itemdata, 'count', this.itemdata.count++);
+		substractCount() {
+			this.$emit('subtractitemcount');
 		},
 
 		deleteItem() {

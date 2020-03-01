@@ -5,19 +5,22 @@ const store = new Vuex.Store({
 				images: ["a1.jpg", "a2.jpg", "a3.jpg", "a4.jpg"],
 				name: "ZenBook 13 UX333FA-A4199T",
 				price: 21999,
-				article: "71282506"
+				article: "71282506",
+				count: 1
 			},
 			{
 				images: ["f1.jpg", "f2.jpg", "f3.jpg", "f4.jpg"],
 				name: "MICROSOFT Surface Pro 6 8/256Gb",
 				price: 41999,
-				article: "71272747"
+				article: "71272747",
+				count: 1
 			},
 			{
 				images: ["g1.jpg", "g2.jpg", "g3.jpg", "g4.jpg"],
 				name: "NIKON D3500 + AF-P 18-55 non VR",
 				price: 12599,
-				article: "71263098"
+				article: "71263098",
+				count: 1
 			}
 		],
 
@@ -85,17 +88,24 @@ const store = new Vuex.Store({
 			state.currentProduct = productArticle;
 		},
 		addCartItem: (state, product) => {
-			state.cartItems.forEach(x => x.article != product.article ? state.cartItems.push(product) : x);
+			state.cartItems.push(product);
 		},
 
 		deleteCartItem: (state, itemArticle) => {
 			state.cartItems.splice(itemArticle, 1);
 		},
 
+		addItemCount: (state, itemIndex) => {
+			state.cartItems[itemIndex].count++;
+		},
+
+		subtractItemCount: (state, itemIndex) => {
+			state.cartItems[itemIndex].count--;
+		},
+
 		clearCart: (state) => {
-			console.log("WOOORKKK");
 			state.cartItems = [];
-		}
+		},
 
 	},
 
@@ -113,7 +123,7 @@ const store = new Vuex.Store({
 
 		cartItemsPrice: state=> {
 			let fullPrice = 0;
-			state.cartItems.forEach(x => fullPrice += x.price);
+			state.cartItems.forEach(x => fullPrice += x.price*x.count);
 			return fullPrice;
 		},
 
@@ -122,6 +132,10 @@ const store = new Vuex.Store({
 		},
 		currentProduct: state=> {
 			return state.currentProduct;
+		},
+
+		isProductInCart: (state, product) => {
+			state.cartItems.forEach(x => x.article === product.article);
 		}
 
 		
