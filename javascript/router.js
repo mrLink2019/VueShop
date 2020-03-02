@@ -9,8 +9,14 @@ let router = new VueRouter({
 			path: '/cart',
 			name: 'cart',
 			component: Vcart,
+		},
+		{
+			path: '/product',
+			name: 'productpage',
+			component: VproductPage,
 			props: true
-		}
+		},
+
 	]
 
 });

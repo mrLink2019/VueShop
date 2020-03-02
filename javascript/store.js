@@ -62,9 +62,6 @@ const store = new Vuex.Store({
 	},
 
 	mutations: {
-		setCurrentProduct: (state, productArticle) => {
-			state.currentProduct = productArticle;
-		},
 		addCartItem: (state, product) => {
 			if(state.cartItems.length) {
 				let isProductInCart = false;

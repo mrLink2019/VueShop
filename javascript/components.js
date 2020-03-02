@@ -239,7 +239,9 @@ let Vproduct = {
 					</div>
 					<div class="card-footer">
 						<p class="text-warning price" style="font-size: 25px;"><b>{{productdata.price + ' UAH'}}</b></p>
-						<a class="btn btn-primary btn-lg btn-block" href="#" @click="setCurrentProduct(productdata.article)"><b>Details</b></a>
+						<router-link :to="{name: 'productpage', params: {productdata: productdata}}">
+							<a class="btn btn-primary btn-lg btn-block text-white"><b>Details</b></a>
+						</router-link>
 					</div>
 				</div>`,
 
@@ -249,10 +251,7 @@ let Vproduct = {
     	}
   	},
 	methods: {
-		setCurrentProduct(productArticle) {
-	      store.commit('setCurrentProduct', productArticle);
-	      console.log(productArticle);
-	    },
+
  	}
 };
 
@@ -264,7 +263,7 @@ let VcartItem = {
   			default() {
   				return{}
   			}
-  		},
+  		}
  	},
 
 	template: ` 
@@ -339,6 +338,54 @@ let VcartItem = {
 
  	}
 
+};
+
+let VproductPage = {
+
+	props: {
+		productdata: {
+  			type: Object,
+  			default() {
+  				return{}
+  			}
+  		}
+ 	},
+
+	template: ` <div class="catalog">
+					<v-header :cartitemscount="cartItemsCount"></v-header>
+					<div class="container-fluid">
+						<div class="row mt-3">
+							{{productdata.article}}
+						</div>
+					</div>
+					<v-footer></v-footer>
+				</div>	`,
+
+	data: function () {
+    	return {
+
+    	}
+  	},
+
+	components: {
+		'v-header':  Vheader,             
+    	'v-footer':  Vfooter,
+	    'v-product': Vproduct
+	  },
+
+	computed: {
+	    products: function() {
+	    	return store.getters.products;
+	    },
+	    
+	    cartItemsCount: function() {
+    		return store.getters.cartItemsCount;
+    	}
+	},
+
+	methods: {
+
+ 	}
 };
 
 let Vcatalog = {
