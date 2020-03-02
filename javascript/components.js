@@ -411,6 +411,9 @@ let Vcart = {
 	template: ` <div class="cart">
 					<v-header :cartitemscount="cartItemsCount"></v-header>
 					<div class="container-fluid">
+						<div v-if="!cartItemsCount" class="text-danger">
+							<strong>There are no products in cart</strong>
+						</div>
 						<v-cart-item v-for = "(item, index) in cartItems"
 									:itemdata = "item"
 									:key = "item.article"
@@ -418,28 +421,27 @@ let Vcart = {
 									@subtractitemcount = "subtractItemCount(index)"
 									@deletecartitem = "deleteCartItem(index)">
 						</v-cart-item>
-						</div>
-						<div class="container-fluid">
+					</div>
+						<div v-show="cartItemsCount" class="container-fluid">
 							<div class="row bg-danger text-white">
 								<div class="col-4 mt-3 mb-3">
-									<strong>
-										Price of all your products: 
-									</strong> 
-								</div>
-								<div class="col-4 mt-3 mb-3">
-									<strong>
-										{{fullPrice + ' UAH'}}
-									</strong>
-								</div>
-								<div class="col-2 mt-1" @click="buy(fullPrice)">
-									<button class="button btn-primary btn-lg btn-block">
-										Buy
-									</button>
-								</div>
-								
+								<strong>
+									Price of all your products: 
+								</strong> 
 							</div>
+							<div class="col-4 mt-3 mb-3">
+								<strong>
+									{{fullPrice + ' UAH'}}
+								</strong>
+							</div>
+							<div class="col-2 mt-1" @click="buy(fullPrice)">
+								<button class="button btn-primary btn-lg btn-block">
+									Buy
+								</button>
+							</div>	
 						</div>
-						<v-footer></v-footer>
+					</div>
+					<v-footer :style="styleObject"></v-footer>
 				</div>`,
 
 	data: function () {
@@ -456,13 +458,27 @@ let Vcart = {
 	    cartItemsCount: function() {
     		return store.getters.cartItemsCount;
     	},
-    	
+
 	    fullPrice: function() {
 	      return store.getters.cartItemsPrice;
+	    },
+
+	    styleObject: function() {
+	    	if(!this.cartItemsCount)	{	
+    			return {
+	    			'position': 'absolute',
+	    			'bottom': '0',
+	    			'right': '0',
+	    			'left': '0'
+    			}
+	    	}
 	    }
+
+	    
 	},
 
 	methods: {
+
 		addItemCount (itemIndex) {
     		store.commit('addItemCount', itemIndex);
     	},
