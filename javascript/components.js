@@ -87,18 +87,29 @@ let Vnavbar = {
 	template: `<div class="navbar navbar-collapse float-left sticky-top mr-4 bg-dark" >
 				<ul class="nav navbar-nav side-nav mt-2 text-warning">
 					<li class="nav-item">
-						
-						<strong>click</strong>
-						
+						<strong>
+							Sort Products:
+						</strong>
 					</li>
-					<li class="nav-item">
-							<strong>Contact Support</strong>
+					<li class="nav-item mt-2" @click="clearSort()">
+						<strong>
+							All
+						</strong>	
 					</li>
-					<li class="nav-item">
-							<strong>News and Updates</strong>
+					<li class="nav-item mt-1" @click="sortLaptops()">
+						<strong>
+							Laptops
+						</strong>
 					</li>
-					<li class="nav-item">
-							<strong>Forum</strong>
+					<li class="nav-item mt-1" @click="sortTablets()">
+						<strong>
+							Tablets
+						</strong>
+					</li>
+					<li class="nav-item mt-1" @click="sortCamera()">
+						<strong>
+							Camera
+						</strong>
 					</li>
 				</ul>
 			</div>`,
@@ -110,6 +121,21 @@ let Vnavbar = {
   	},
 	methods: {
 
+		clearSort() {
+			store.commit('clearSort');
+		},
+
+		sortLaptops() {
+			store.commit('sortProducts', 'laptop');
+		},
+
+		sortTablets() {
+			store.commit('sortProducts', 'tablet');
+		},
+
+		sortCamera() {
+			store.commit('sortProducts', 'camera');
+		},
  	}
 };
 
@@ -300,7 +326,7 @@ let VcartItem = {
 						-
 					</button>
 					<strong class="text-white">
-						{{itemdata.count}}
+						{{itemdata.cartCount}}
 					</strong>
 					<button class="button btn-primary" @click="addCount()">
 						+
@@ -353,12 +379,65 @@ let VproductPage = {
 
 	template: ` <div class="catalog">
 					<v-header :cartitemscount="cartItemsCount"></v-header>
-					<div class="container-fluid">
-						<div class="row mt-3">
-							{{productdata.article}}
-						</div>
-					</div>
-					<v-footer></v-footer>
+					<div class="container-fluid" style="bottom: 0;">
+	        			<div class="row">
+	            			<div class="col-4 mt-3">
+	                    		<div id="carousel" class="carousel slide" data-ride="carousel">
+				                    <div class="carousel-inner" role="listbox">
+				                        <div class="carousel-item active">
+				                            <img class="d-block img-fluid" 
+				                            :src="'images/' + productdata.images[1]" alt="Slide">
+				                        </div> 
+				                        <div class="carousel-item"
+				                        v-for = "image in productdata.images">
+				                            <img class="d-block img-fluid" alt="Slide" :src="'images/' + image">    
+				                        </div>
+				                    </div>
+	        
+				                    <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
+				                        <span class="carousel-control-prev-icon bg-danger" aria-hidden="true"></span>
+				                        <span class="sr-only">prev</span>
+				                    </a>
+				                    
+				                    <a class="carousel-control-next" href="#carousel" role="button" data-slide="next">
+				                        <span class="carousel-control-next-icon bg-danger" aria-hidden="true"></span>
+				                        <span class="sr-only">next</span>
+				                    </a>
+	        
+	                			</div>
+	            			</div>
+	            			<div class="col-8 mt-3">
+								<div class="text-primary" style="font-size: 30px;">
+									<strong>
+										{{'Name: ' + productdata.name}}
+									</strong>
+									<br>
+									<strong>
+										{{'Article: ' + productdata.article}}
+									</strong>
+									<br>
+									<strong class="text-warning">
+										{{'Price: ' + productdata.price + ' UAH'}}
+									</strong>
+									<br>
+									<button @click="addCartItem(productdata)" class="button btn-primary">
+										Add to cart
+									</button>
+								</div>
+	            			</div>
+	        			</div>
+	        			<div class="text-primary mt-3">
+	        				<h1>Description</h1>
+	        				<br>
+							<strong>
+								{{productdata.description}}
+							</strong>
+	        			</div>
+    				</div>
+					<v-footer style="position: absolute;
+	    				bottom: 0;
+	    				right: 0;
+	    			    left: 0;"></v-footer>
 				</div>	`,
 
 	data: function () {
@@ -384,7 +463,9 @@ let VproductPage = {
 	},
 
 	methods: {
-
+		addCartItem (cartItem) {
+    		store.commit('addCartItem', cartItem);
+    	},
  	}
 };
 
@@ -399,6 +480,7 @@ let Vcatalog = {
 					<v-navbar></v-navbar>
 					<div class="container-fluid">
 						<div class="row mt-3">
+							{{startWork()}}
 							<div class="product-catalog"
 								style="display: flex;
 									flex-wrap: wrap;
@@ -417,7 +499,7 @@ let Vcatalog = {
 
 	data: function () {
     	return {
-
+    		firstLoad: false
     	}
   	},
 
@@ -439,7 +521,12 @@ let Vcatalog = {
 	},
 
 	methods: {
-
+		startWork() {
+			if(!this.firstLoad) {
+				this.firstLoad = true;
+				store.commit('clearSort');
+			}
+		}
  	}
 };
 
