@@ -86,7 +86,7 @@ let Vnavbar = {
 
 	template: `<div class="navbar navbar-collapse float-left sticky-top mr-4 bg-dark" >
 				<ul class="nav navbar-nav side-nav mt-2 text-warning">
-					<li class="nav-item">
+					<li class="nav-item mt-2">
 						<strong>
 							Sort Products:
 						</strong>
@@ -111,14 +111,47 @@ let Vnavbar = {
 							Camera
 						</strong>
 					</li>
+					<li class="nav-item mt-2">
+						<div class="range-slider" 
+						style="width: 200px; position: relative;">
+							<input 
+								type="range" 
+								min="0" 
+								:max = "maxProductPrice+100" 
+								step="10"
+								v-model = "minPrice"
+								@change="setRangeSlider()"/>
+							<br>	
+							<input 
+								type="range" 
+								min="0" 
+								:max = "maxProductPrice+100" 
+								step="10"
+								v-model = "maxPrice"
+								@change="setRangeSlider()"/>
+						</div>
+						<div class="slider-value">
+							<p>Min: {{minPrice}}</p>
+							<p>Max: {{maxPrice}}</p>
+						</div>		
+					</li>
 				</ul>
-			</div>`,
+			</div>`,	
 
 	data: function () {
     	return {
+    		minPrice: 0,
+    		maxPrice: 100000
 
     	}
   	},
+
+  	computed: {
+	    maxProductPrice: function() {
+    		return store.getters.maxProductPrice;
+    	}
+	},
+
 	methods: {
 
 		clearSort() {
@@ -126,16 +159,31 @@ let Vnavbar = {
 		},
 
 		sortLaptops() {
-			store.commit('sortProducts', 'laptop');
+			store.commit('sortProductsByName', 'laptop');
 		},
 
 		sortTablets() {
-			store.commit('sortProducts', 'tablet');
+			store.commit('sortProductsByName', 'tablet');
 		},
 
 		sortCamera() {
-			store.commit('sortProducts', 'camera');
+			store.commit('sortProductsByName', 'camera');
 		},
+
+		setRangeSlider() {
+	        if (this.minPrice > this.maxPrice) {
+	        	let tmp = this.maxPrice;
+	        	this.maxPrice = this.minPrice;
+	        	this.minPrice = tmp;
+	        }
+	        this.sortByPrice(this.minPrice, this.maxPrice);
+	        console.log(this.minPrice + " " + this.maxPrice);
+	        
+    	},
+
+    	sortByPrice(minPrice, maxPrice) {
+        	store.commit('sortByPrice', {'minPrice' : minPrice, 'maxPrice': maxPrice});
+        }
  	}
 };
 

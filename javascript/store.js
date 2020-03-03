@@ -85,7 +85,8 @@ const store = new Vuex.Store({
 				categories: ["camera", "Canon"]
 			}
 		],
-		sortedProducts: []
+		sortedProducts: [],
+		productsForPriceSorting: []
 	},
 
 	mutations: {
@@ -97,7 +98,7 @@ const store = new Vuex.Store({
 						isProductInCart = true;
 						product.cartCount++;
 					}
-				})
+				});
 				if (!isProductInCart) {
 					product.cartCount ++;
 					state.cartItems.push(product);
@@ -127,7 +128,7 @@ const store = new Vuex.Store({
 			state.cartItems = [];
 		},
 
-		sortProducts: (state, itemForSorting) => {
+		sortProductsByName: (state, itemForSorting) => {
 			state.sortedProducts = [];
 			state.products.map(function (item) {
 				for (var i = 0; i <= item.categories.length - 1; i++) {
@@ -136,11 +137,22 @@ const store = new Vuex.Store({
 					}
 				}	
 					
-			})
+			});
+			state.productsForPriceSorting = state.sortedProducts.slice();
+
 		},
 
 		clearSort: (state) => {
-			state.sortedProducts = state.products;
+			state.sortedProducts = state.products.slice();
+			state.productsForPriceSorting = state.sortedProducts.slice();
+		},
+
+		sortByPrice: (state, payload) => {
+			state.sortedProducts = state.productsForPriceSorting.slice();
+			console.log(payload.minPrice + " " + payload.maxPrice);
+			state.sortedProducts = state.sortedProducts.filter(function (item) {
+          		return item.price >= payload.minPrice && item.price <= payload.maxPrice
+        	});
 		}
 
 	},
@@ -150,24 +162,34 @@ const store = new Vuex.Store({
 	},
 
 	getters: {
-		cartItems: state=> {
+		cartItems: state => {
 			return state.cartItems;
 		},
-		cartItemsCount: state=> {
+		cartItemsCount: state => {
 			return state.cartItems.length;
 		},
 
-		cartItemsPrice: state=> {
+		cartItemsPrice: state => {
 			let fullPrice = 0;
 			state.cartItems.forEach(x => fullPrice += x.price*x.cartCount);
 			return fullPrice;
 		},
 
-		products: state=> {
+		products: state => {
 			return state.sortedProducts;
 		},
-		currentProduct: state=> {
+		currentProduct: state => {
 			return state.currentProduct;
+		},
+
+		maxProductPrice: state => {
+			let maxProductPrice = 0;
+			state.products.map(function (product) {
+					if (product.price > maxProductPrice) {
+						maxProductPrice = product.price;
+					}
+				})
+			return maxProductPrice;		
 		}
 	}
 
