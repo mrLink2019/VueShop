@@ -13,7 +13,7 @@ const store = new Vuex.Store({
 				categories: ["laptop", "Asus"]
 			},
 			{
-				images: ["b1.jpg", "b2.jpg", "b3.jpg", "b4.jpg"],
+				images: ["b1.jpg", "b2.png", "b3.png", "b4.png"],
 				name: "Acer Aspire 3 A315-22",
 				price: 5199,
 				article: "71279753",
@@ -22,7 +22,7 @@ const store = new Vuex.Store({
 				categories: ["laptop", "Aser"]
 			},
 			{
-				images: ["c1.png", "c2.jpg", "c3.jpg", "c4.jpg"],
+				images: ["c1.jpg", "c2.jpg", "c3.jpg", "c4.jpg"],
 				name: "HP Envy x360 13-ar0005ur",
 				price: 19999,
 				article: "71271738",
@@ -76,7 +76,7 @@ const store = new Vuex.Store({
 				categories: ["camera", "Panasonic"]
 			},
 			{
-				images: ["i1.jpeg", "i2.jpg", "i3.jpg", "i4.jpg"],
+				images: ["i1.jpeg", "i2.jpeg", "i3.jpeg", "i4.jpeg"],
 				name: "CANON EOS Wi-Fi 4000D 18-55 DC",
 				price: 9299,
 				article: "71255600",

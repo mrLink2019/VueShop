@@ -434,11 +434,13 @@ let VproductPage = {
 				                    <div class="carousel-inner" role="listbox">
 				                        <div class="carousel-item active">
 				                            <img class="d-block img-fluid" 
-				                            :src="'images/' + productdata.images[1]" alt="Slide">
+				                            :src="'images/' + productdata.images[0]" alt="Slide">
 				                        </div> 
 				                        <div class="carousel-item"
-				                        v-for = "image in productdata.images">
+				                        v-for = "image in this.images">
+				                        	{{	deleteFirstImg()	}}
 				                            <img class="d-block img-fluid" alt="Slide" :src="'images/' + image">    
+				                        	}
 				                        </div>
 				                    </div>
 	        
@@ -490,7 +492,8 @@ let VproductPage = {
 
 	data: function () {
     	return {
-
+    		images: this.productdata.images.slice(),
+    		isFirstImgDeleted: false
     	}
   	},
 
@@ -514,6 +517,14 @@ let VproductPage = {
 		addCartItem (cartItem) {
     		store.commit('addCartItem', cartItem);
     	},
+
+    	deleteFirstImg() {
+    		if (!this.isFirstImgDeleted) {
+    			this.images.shift();
+    			this.isFirstImgDeleted = true;
+    			console.log('1st img deleted');
+    		}
+    	}
  	}
 };
 
