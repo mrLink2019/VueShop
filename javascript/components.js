@@ -305,7 +305,7 @@ let Vproduct = {
   		},
  	},
 
-	template: ` <div class="card text-white bg-danger" style="padding: 10px; margin-bottom: 16px;">
+	template: ` <div class="card text-white bg-primary" style="padding: 10px; margin-bottom: 16px;">
 					<img class="card-img" :src="'images/' + productdata.images[0]" alt="" style="width: 375px; height: 260px;">
 					<div class="card-body">
 						<h5 class="card-title"><b>{{productdata.name}}</b> <br> <br></h5>
@@ -314,7 +314,7 @@ let Vproduct = {
 					<div class="card-footer">
 						<p class="text-warning price" style="font-size: 25px;"><b>{{productdata.price + ' UAH'}}</b></p>
 						<router-link :to="{name: 'productpage', params: {productdata: productdata}}">
-							<a class="btn btn-primary btn-lg btn-block text-white"><b>Details</b></a>
+							<a class="btn btn-success btn-lg btn-block text-white"><b>Details</b></a>
 						</router-link>
 					</div>
 				</div>`,
@@ -341,7 +341,7 @@ let VcartItem = {
  	},
 
 	template: ` 
-			<div class="row bg-danger mt-3 mb-3" style="box-shadow: 0 0 8px 0 #e0e0e0;">
+			<div class="row bg-primary mt-3 mb-3" style="box-shadow: 0 0 8px 0 #e0e0e0;">
 				<div class="col-3 mt-3 mb-3">
 					<img :src="'images/' + itemdata.images[0]" alt="" class="w-100">
 				</div>
@@ -370,13 +370,13 @@ let VcartItem = {
 					    flex-direction: row;
 					    justify-content:space-around;
 					    align-items: center;">
-					<button class="button btn-primary" @click="substractCount()">
+					<button class="button btn-success" @click="substractCount()">
 						-
 					</button>
 					<strong class="text-white">
 						{{itemdata.cartCount}}
 					</strong>
-					<button class="button btn-primary" @click="addCount()">
+					<button class="button btn-success" @click="addCount()">
 						+
 					</button>
 				</div>
@@ -386,7 +386,7 @@ let VcartItem = {
 					    flex-wrap: wrap; 
 					    justify-content:space-around;
 					    align-items: center;">
-					<button class="button btn-primary btn-lg" @click="deleteItem(itemdata.article)">
+					<button class="button btn-success btn-lg" @click="deleteItem(itemdata.article)">
 						remove
 					</button>
 				</div>
@@ -427,7 +427,7 @@ let VproductPage = {
 
 	template: ` <div class="catalog">
 					<v-header :cartitemscount="cartItemsCount"></v-header>
-					<div class="container-fluid" style="bottom: 0;">
+					<div class="container-fluid" style="min-height: 100%; height: 100%;">
 	        			<div class="row">
 	            			<div class="col-4 mt-3">
 	                    		<div id="carousel" class="carousel slide" data-ride="carousel">
@@ -594,7 +594,7 @@ let Vcart = {
 					<v-header :cartitemscount="cartItemsCount"></v-header>
 					<div class="container-fluid">
 						<div v-if="!cartItemsCount" class="text-danger">
-							<strong>There are no products in cart</strong>
+							<strong style="font-size: 30px;">There are no products in cart</strong>
 						</div>
 						<v-cart-item v-for = "(item, index) in cartItems"
 									:itemdata = "item"
