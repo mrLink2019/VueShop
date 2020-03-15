@@ -430,7 +430,6 @@ let VproductPage = {
 					<div class="container-fluid" style="min-height: 100%; height: 100%;">
 	        			<div class="row">
 	            			<div class="col-4 mt-3">
-	            				{{	getItemImages()	}}
 	                    		<div id="carousel" class="carousel slide" data-ride="carousel">
 				                    <div class="carousel-inner" role="listbox">
 				                        <div class="carousel-item active">
@@ -438,7 +437,7 @@ let VproductPage = {
 				                            :src="'images/' + productdata.images[0]" alt="Slide">
 				                        </div> 
 				                        <div class="carousel-item"
-				                        v-for = "image in this.images">
+				                        v-for = "image in images">
 
 				                            <img class="d-block img-fluid" alt="Slide" :src="'images/' + image">    
 				                        	}
@@ -492,8 +491,7 @@ let VproductPage = {
 
 	data: function () {
     	return {
-    		images: [],
-    		isFirstImgDeleted: false
+
     	}
   	},
 
@@ -507,6 +505,10 @@ let VproductPage = {
 	    products: function() {
 	    	return store.getters.products;
 	    },
+
+	    images: function() {
+	    	return this.productdata.images.slice(1);
+	    },
 	    
 	    cartItemsCount: function() {
     		return store.getters.cartItemsCount;
@@ -516,11 +518,6 @@ let VproductPage = {
 	methods: {
 		addCartItem (cartItem) {
     		store.commit('addCartItem', cartItem);
-    	},
-
-    	getItemImages() {
-    		this.images = this.productdata.images.slice();
-    		this.images.shift();
     	}
 
  	}
