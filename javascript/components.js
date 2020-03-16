@@ -425,37 +425,50 @@ let VproductPage = {
   		}
  	},
 
+ 	head: {
+		script: [
+			{ 
+				type: 'text/javascript', 
+				src: 'https://unpkg.com/swiper/js/swiper.min.js',
+				async: true, 
+				body: true
+			},
+			{ 
+				type: 'text/javascript', 
+				src: 'javascript/slider.js',
+				async: true, 
+				body: true
+			}
+		]
+	},
+
 	template: ` <div class="catalog">
 					<v-header :cartitemscount="cartItemsCount"></v-header>
 					<div class="container-fluid" style="min-height: 100%; height: 100%;">
-	        			<div class="row">
-	            			<div class="col-4 mt-3">
-	                    		<div id="carousel" class="carousel slide" data-ride="carousel">
-				                    <div class="carousel-inner" role="listbox">
-				                        <div class="carousel-item active">
-				                            <img class="d-block img-fluid" 
-				                            :src="'images/' + productdata.images[0]" alt="Slide">
-				                        </div> 
-				                        <div class="carousel-item"
-				                        v-for = "image in images">
-
-				                            <img class="d-block img-fluid" alt="Slide" :src="'images/' + image">    
-				                        	}
-				                        </div>
-				                    </div>
-				                    <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
-				                        <span class="carousel-control-prev-icon bg-danger" aria-hidden="true"></span>
-				                        <span class="sr-only">prev</span>
-				                    </a>
-				                    
-				                    <a class="carousel-control-next" href="#carousel" role="button" data-slide="next">
-				                        <span class="carousel-control-next-icon bg-danger" aria-hidden="true"></span>
-				                        <span class="sr-only">next</span>
-				                    </a>
-	        
-	                			</div>
+						<div class="row">
+	            			<div class="col-7 mt-3">
+								<div class="slider">
+									<div class="swiper-container gallery-top">
+										<div class="swiper-wrapper">
+											<div class="swiper-slide mainWindow"
+												 v-for = "image in productdata.images" 
+												 v-bind:style="{ 'background-image': 'url(images/' + image + ')' }">
+											</div>
+										</div>
+										<div class="swiper-button-next"></div>
+										<div class="swiper-button-prev"></div>
+									</div>
+									<div class="swiper-container gallery-thumbs">
+										<div class="swiper-wrapper">
+											<div class="swiper-slide miniWindow"
+												 v-for = "image in productdata.images" 
+												 v-bind:style="{ 'background-image': 'url(images/' + image + ')' }">
+											</div>
+										</div>
+									</div>
+								</div>   
 	            			</div>
-	            			<div class="col-8 mt-3">
+	            			<div class="col-5 mt-3">
 								<div class="text-primary" style="font-size: 30px;">
 									<strong>
 										{{'Name: ' + productdata.name}}
@@ -481,7 +494,7 @@ let VproductPage = {
 							<strong>
 								{{productdata.description}}
 							</strong>
-	        			</div>
+	        			</div>	        			
     				</div>
 					<v-footer style="position: absolute;
 	    				bottom: 0;
